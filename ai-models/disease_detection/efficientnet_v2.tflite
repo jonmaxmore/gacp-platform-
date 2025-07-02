@@ -1,0 +1,27 @@
+final options = InterpreterOptions();
+options.addDelegate(GpuDelegateV2());
+_interpreter = await Interpreter.fromAsset(
+  'ai-models/disease_detection/efficientnet_v2.tflite',
+  options: options,
+);
+
+Future<Map<String, dynamic>> detectDisease(File imageFile) async {
+  return compute(_runInference, imageFile.path);
+}
+
+static Map<String, dynamic> _runInference(String imagePath) {
+  // รัน inference ใน isolate แยก
+}
+
+class DiseaseDetector {
+  static DiseaseDetector? _instance;
+  
+  factory DiseaseDetector() {
+    _instance ??= DiseaseDetector._internal();
+    return _instance!;
+  }
+  
+  DiseaseDetector._internal();
+  
+  // ...โค้ดอื่นๆ...
+}

@@ -1,0 +1,12 @@
+dependencies:
+  flutter:
+    sdk: flutter
+  tflite_flutter: ^0.9.6
+  image_picker: ^1.0.7
+  image: ^4.0.17
+
+flutter:
+  assets:
+    - ai-models/disease_detection/efficientnet_v2.tflite
+    - ai-models/disease_detection/labels.txt
+    - ai-models/disease_detection/version.json

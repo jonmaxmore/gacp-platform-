@@ -1,0 +1,41 @@
+{
+  "name": "EfficientNetV2-S",
+  "version": "1.2.0",
+  "description": "Plant disease classification model",
+  "training_date": "2023-11-15",
+  "input_size": 224,
+  "accuracy": 0.934,
+  "classes": 15,
+  "dataset": {
+    "name": "ThaiHerbDiseases-v3",
+    "size": 12500,
+    "distribution": {
+      "healthy": 3000,
+      "bacterial_spot": 1000,
+      "early_blight": 800,
+      "late_blight": 900,
+      "leaf_mold": 850,
+      "powdery_mildew": 950,
+      "target_spot": 900,
+      "yellow_leaf_curl": 850,
+      "mosaic_virus": 800,
+      "rust": 900,
+      "spider_mite": 850,
+      "nematodes": 800,
+      "thrips": 750,
+      "miner": 700,
+      "whitefly": 700
+    }
+  },
+  "training_params": {
+    "epochs": 100,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "augmentation": true
+  },
+  "performance": {
+    "precision": 0.928,
+    "recall": 0.931,
+    "f1_score": 0.929
+  }
+}

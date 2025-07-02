@@ -1,0 +1,49 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      FLUTTER_VERSION: '3.19.0'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: 'stable'
+          
+      - name: Install dependencies
+        run: |
+          cd apps/mobile
+          flutter pub get
+          
+      - name: Analyze code
+        run: |
+          cd apps/mobile
+          flutter analyze
+          
+      - name: Run tests
+        run: |
+          cd apps/mobile
+          flutter test
+          
+      - name: Build APK
+        run: |
+          cd apps/mobile
+          flutter build apk --release

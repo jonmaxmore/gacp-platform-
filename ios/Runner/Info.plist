@@ -1,0 +1,4 @@
+<key>NSCameraUsageDescription</key>
+<string>Required for disease detection</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Required for disease detection</string>
